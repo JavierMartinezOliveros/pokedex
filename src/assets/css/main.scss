@@ -1,0 +1,149 @@
+//Variables
+$gold: #ECA539;
+$red: #C00E20;
+$orange: #F22539;
+
+$graydarker: #353535;
+$graydark: #5E5E5E;
+$gray: #BFBFBF;
+$graymd: #E8E8E8;
+$graylight: #F5F5F5;
+$graylightest: #F9F9F9;
+
+$white: #FFFFFF;
+
+//Components
+@import "./components/button.scss";
+@import "./components/pokemon-list-item.scss";
+@import "./components/pokemon-modal.scss";
+@import "./components/footer.scss";
+@import "./components/empty-list.scss";
+@import "./components/loader.scss";
+ 
+body {
+  background: $graylightest;
+  font-family: "Lato", sans-serif;
+}
+
+h1 {
+  color: $graydarker;
+  font-weight: 700;
+}
+
+.pokedex {
+  background: $graylightest;
+  margin: 0 auto;
+
+  &-home {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+
+    &-image {
+      height: 288px;
+      margin: 0 auto;
+      position: relative;
+      width: 325px;
+
+      img {
+        position: relative;
+        z-index: 1;
+      }
+
+      &:before {
+        content: "";
+        background: $orange;
+        border-radius: 50%;
+        border: 2px solid #000000;
+        bottom: 11px;
+        height: 206px;
+        left: 47px;
+        position: absolute;
+        width: 206px;
+      }
+    }
+
+    &-content {
+      margin: 0 auto;
+      max-width: 570px;
+      padding: 0 30px;
+
+      h1 {
+        margin: 60px 0 0;
+      }
+
+      p {
+        color: $graydark;
+        font-size: 18px;
+        margin: 30px 0 50px;
+      }
+    }
+
+    .button {
+      margin: 0 auto;
+    }
+  }
+
+  &-wrapper {
+    height: 100vh;
+    margin: 0 auto;
+    max-width: 570px;
+    position: relative;
+  }
+
+  &-fav-icon {
+    align-items: center;
+    background: $graylight;
+    border-radius: 50%;
+    display: flex;
+    height: 44px;
+    justify-content: center;
+    width: 44px;
+
+    svg {
+      fill: $gray;
+    }
+
+    &.favorite {
+      svg {
+        fill: $gold;
+      }
+    }
+  }
+
+  &-item {
+    display: inline-block;
+    margin-top: 125px;
+    width: 100%;
+  }
+
+  &-field {
+    background: url('/IconSearch.svg')15px center no-repeat $white;
+    border: transparent;
+    border-radius: 5px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 0.02);
+    color: $gray;
+    font-family: "Montserrat", sans-serif;;
+    height: 50px;
+    left: 0;
+    margin: 35px auto 40px;
+    max-width: 570px;
+    padding: 16px 43px;
+    position: absolute;
+    width: 100%;
+  }
+  
+  @media (max-width: 375px) {
+    &-wrapper {
+      padding: 0 30px;
+    }
+
+    &-field {
+      left: 30px;
+      max-width: 315px;
+    }
+  }
+}

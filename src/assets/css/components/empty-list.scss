@@ -1,0 +1,19 @@
+.empty-list {
+  display: inline-block;
+  margin-top: 125px;
+  width: 100%;
+
+  h1 {
+    font-size: 36px;
+  }
+
+  p {
+    color: $graydark;
+    font-size: 20px;
+    margin: 10px auto 25px;
+  }
+
+  .button {
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,15 @@
+.loader {
+  animation: l1 1s infinite;
+  aspect-ratio: 1;
+  background: url('/Loader.svg') no-repeat center;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 #0004;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50px);
+  width: 106px;
+}
+@keyframes l1 {
+  100% {box-shadow: 0 0 0 30px #0000}
+}
