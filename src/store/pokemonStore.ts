@@ -13,7 +13,6 @@ export const usePokemonStore = defineStore('pokemon', {
   }),
   actions: {
     addFavorite(pokemon: Pokemon) {
-      // Evita duplicados
       if (!this.isFavorite(pokemon.name)) {
         this.favorites.push(pokemon);
       }
