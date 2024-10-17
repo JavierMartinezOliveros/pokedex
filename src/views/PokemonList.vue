@@ -1,6 +1,6 @@
 <template>
   <div class="pokedex-wrapper">
-    <!-- buscador de Pokémon -->
+
     <input 
       v-if="!loading"
       v-model="search"
@@ -9,7 +9,6 @@
       placeholder="Search" 
     />
     
-    <!-- loader -->
     <div 
       v-if="loading"
       class="loader"
@@ -24,6 +23,8 @@
     <Footer 
       v-if="!error && !loading" 
       @clearSearch="clearSearchField" 
+      :isFavoritesView="isFavoritesView"
+      @toggleView="toggleView"
     />
   </div>
 </template>
@@ -49,6 +50,7 @@ export default {
     const loading = ref(true);
     const error = ref(false);
     const search = ref('');
+    const isFavoritesView = ref(false);
 
     const clearSearchField = () => {
       search.value = '';
@@ -69,20 +71,30 @@ export default {
       }
     });
 
-    const filteredPokemonList = computed(() =>
-      pokemonList.value.filter(pokemon =>
+    const filteredPokemonList = computed(() => {
+      const currentList = isFavoritesView.value 
+        ? pokemonStore.favorites || [] 
+        : pokemonList.value;
+
+      return currentList.filter((pokemon: Pokemon) =>
         pokemon.name.toLowerCase().includes(search.value.toLowerCase())
-      )
-    );
+      );
+    });
+
+    const toggleView = (showFavorites: boolean) => {
+      isFavoritesView.value = showFavorites;
+    };
 
     return { 
       pokemonList, 
       loading, 
       error, 
       search, 
-      filteredPokemonList, 
+      filteredPokemonList,
       clearSearchField,
       pokemonStore,
+      toggleView,
+      isFavoritesView
     };
   }
 };

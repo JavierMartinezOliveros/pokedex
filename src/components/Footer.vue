@@ -2,9 +2,9 @@
   <footer>
     <div class="pokedex-wrapper">
       <Button 
-        usage="active"
+        :usage="isFavoritesView ? 'disable' : 'active'"
         label="All"
-        @click="goToPokemonList"
+        @click="getPokemonList"
       >
         <template #icon>
           <img class="icon" src="/IconMenu.svg" />
@@ -12,9 +12,9 @@
       </Button>
 
       <Button 
-        usage="disable"
+        :usage="isFavoritesView ? 'active' : 'disable'"
         label="Favorites"
-        @click="goToFavorites"
+        @click="getFavorites"
       >
         <template #icon>
           <img class="icon" src="/IconStarWhite.svg" />
@@ -26,7 +26,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { usePokemonStore } from '../store/pokemonStore'; // Importar la tienda de Pokémon
+import { usePokemonStore } from '../store/pokemonStore';
 import Button from './Button.vue';
 
 export default defineComponent({
@@ -34,20 +34,33 @@ export default defineComponent({
   components: {
     Button,
   },
+  props: {
+    isFavoritesView: {
+      type: Boolean,
+      required: true
+    }
+  },
   setup(_, { emit }) {
-    const pokemonStore = usePokemonStore(); // Usar la tienda de Pokémon
-    const favorites = pokemonStore.getFavorites; // Obtener la lista de favoritos
+    const pokemonStore = usePokemonStore(); 
+    const favorites = pokemonStore.getFavorites;
 
-    const goToPokemonList = () => {
+    const getPokemonList = () => {
       emit('clearSearch');
-      // Lógica para mostrar el listado de Pokémon
+      emit('toggleView');
+      if (!_.isFavoritesView) {
+      }
     };
 
-    const goToFavorites = () => {
-      console.log(favorites); // Mostrar los favoritos
+    const getFavorites = () => {
+      if (_.isFavoritesView) return;
+      emit('toggleView', true);
     };
 
-    return { goToPokemonList, goToFavorites, favorites };
+    return { 
+      getPokemonList, 
+      getFavorites, 
+      favorites 
+    };
   },
 });
 </script>

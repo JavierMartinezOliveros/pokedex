@@ -4,7 +4,7 @@
       v-for="pokemon in pokemonList" 
       :key="pokemon.id"
       @click="openModal(pokemon.name)"
-      :class="['pokedex-item-data', { 'favorite': isFavorite(pokemon.id) }]"
+      :class="['pokedex-item-data', { 'favorite': isFavorite(pokemon.name) }]"
     >
       {{ capitalizeFirstLetter(pokemon.name) }}
       <div class="pokedex-fav-icon">
@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts">
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import PokemonModal from './PokemonModal.vue';
 import { capitalizeFirstLetter } from '../composables/pokemonUtils';
 import { usePokemonStore } from '../store/pokemonStore';
@@ -46,10 +46,8 @@ export default {
       showModal.value = true;
     };
 
-    const isFavorite = (pokemonId: number) => {
-      const favStatus = computed(() => pokemonStore.isFavorite(pokemonId)).value;
-      console.log('Pokemon ID:', pokemonId, 'isFavorite:', favStatus);
-      return favStatus;
+    const isFavorite = (pokemonName: string) => {
+      return pokemonStore.isFavorite(pokemonName);
     };
 
     return { 

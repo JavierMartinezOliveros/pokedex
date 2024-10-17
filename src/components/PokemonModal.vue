@@ -88,7 +88,7 @@ export default defineComponent({
         pokemon.value = response.data;
 
         if (pokemon.value) {
-          isFavorite.value = pokemonStore.isFavorite(pokemon.value.id);
+          isFavorite.value = pokemonStore.isFavorite(pokemon.value.name);
         }
       } catch {
         error.value = true;
@@ -100,12 +100,11 @@ export default defineComponent({
     const addToFavorites = () => {
       if (pokemon.value) {
         if (isFavorite.value) {
-          pokemonStore.removeFavorite(pokemon.value.id);
+          pokemonStore.removeFavorite(pokemon.value.name);
         } else {
           pokemonStore.addFavorite(pokemon.value);
         }
         isFavorite.value = !isFavorite.value;
-        console.log('Updated isFavorite:', isFavorite.value);
       }
     };
 

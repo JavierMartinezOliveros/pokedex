@@ -9,16 +9,8 @@ import './assets/css/main.scss';
 const app = createApp({
   render: () => h(App),
 });
-app.use(createPinia());
 
 app.use(router);
+app.use(createPinia());
 
 app.mount('#app');
-
-/* import { createApp } from 'vue';
-import { createPinia } from 'pinia';
-import App from './App.vue';
-
-const app = createApp(App);
-app.use(createPinia()); 
-app.mount('#app'); */
