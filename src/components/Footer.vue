@@ -52,6 +52,7 @@ export default defineComponent({
     };
 
     const getFavorites = () => {
+      emit('clearSearch');
       if (_.isFavoritesView) return;
       emit('toggleView', true);
     };
