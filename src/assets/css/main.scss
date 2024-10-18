@@ -135,6 +135,10 @@ h1 {
     padding: 16px 43px;
     position: absolute;
     width: calc(100% - 60px);
+
+    &:focus {
+      color: #000000;
+    }
   }
   
   @media (max-width: 375px) {
