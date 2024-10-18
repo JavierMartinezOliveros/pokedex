@@ -19,3 +19,6 @@ Detalles del Pokémon: Al hacer clic en un Pokémon, se puede ver información d
 
 Favoritos: Los usuarios pueden marcar Pokémon como favoritos, que se gestionan usando Pinia.
 
+Test
+
+Se realizarón test usando vitest
