@@ -13,20 +13,25 @@ footer {
   .pokedex-wrapper {
     align-items: center;
     display: flex;
+    height: 100%;
     justify-content: space-between;
-    height: auto;
     width: 100%;
 
     .button {
       max-width: 275px;
-      min-width: 150px;
       width: 100%;
     }
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 425px) {
     .pokedex-wrapper .button {
       width: 150px;
+    }
+  }
+
+  @media (max-width: 320px) {
+    .pokedex-wrapper .button {
+      width: 120px;
     }
   }
 }

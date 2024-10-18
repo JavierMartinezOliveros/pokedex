@@ -90,6 +90,7 @@ h1 {
     height: 100vh;
     margin: 0 auto;
     max-width: 570px;
+    padding: 0 30px;
     position: relative;
   }
 
@@ -128,18 +129,15 @@ h1 {
     color: $gray;
     font-family: "Montserrat", sans-serif;;
     height: 50px;
-    left: 0;
+    left: 30px;
     margin: 35px auto 40px;
     max-width: 570px;
     padding: 16px 43px;
     position: absolute;
-    width: 100%;
+    width: calc(100% - 60px);
   }
   
   @media (max-width: 375px) {
-    &-wrapper {
-      padding: 0 30px;
-    }
 
     &-field {
       left: 30px;
