@@ -2,7 +2,7 @@
   <footer>
     <div class="pokedex-wrapper">
       <Button 
-        :usage="isFavoritesView ? 'disable' : 'active'"
+        :usage="isFavoritesView ? 'inactive' : 'active'"
         label="All"
         @click="getPokemonList"
       >
@@ -12,7 +12,7 @@
       </Button>
 
       <Button 
-        :usage="isFavoritesView ? 'active' : 'disable'"
+        :usage="isFavoritesView ? 'active' : 'inactive'"
         label="Favorites"
         @click="getFavorites"
       >
@@ -42,7 +42,7 @@ export default defineComponent({
   },
   setup(_, { emit }) {
     const pokemonStore = usePokemonStore(); 
-    const favorites = pokemonStore.getFavorites;
+    const favorites = pokemonStore.isFavorite;
 
     const getPokemonList = () => {
       emit('clearSearch');
